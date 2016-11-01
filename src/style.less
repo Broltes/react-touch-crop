@@ -1,0 +1,51 @@
+.tcrop{
+    @crop-size: 200px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    background-color: #000;
+    overflow: hidden;
+
+    &-bg{
+        img{
+            display: block;
+            max-width:100%;
+            min-width: @crop-size;
+        }
+
+        ._transition &{
+            transition: transform .3s;
+        }
+    }
+
+    &-mask{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        font-size: @crop-size;
+        width: 1em;
+        height: 1em;
+        // 没用translate 以方便通过offset 解耦 crop-size 计算拖拽边界
+        margin: -@crop-size/2 0 0 -@crop-size/2;
+        border: 1px solid #ccc;
+        border-radius: 100%;
+        transform: translateZ(0);// 防止被bg transition transform 时遮挡
+
+        &:before{
+            @border-size: 500px;
+
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: -@border-size;
+            left: -@border-size;
+            border: @border-size solid rgba(0,0,0,.6);
+            border-radius: 100%;
+        }
+    }
+
+}

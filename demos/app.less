@@ -1,0 +1,34 @@
+// input type="file" 用label包裹美化
+label input[type=file]{
+    display: none;
+}
+
+button{
+    font: inherit;
+    color: inherit;
+}
+
+.view{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    header{
+        display: flex;
+        padding: .5em;
+        align-items: center;
+        color: blue;
+
+        label{
+            flex: 1;
+        }
+    }
+
+    .main{
+        flex: 1;
+    }
+}
